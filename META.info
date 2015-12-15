@@ -1,0 +1,12 @@
+{
+    "name": "Underscore",
+    "version": "0.1.0",
+    "description": "Functional programming helpers for Perl 6 in the style of Underscore.js",
+    "author": "Dave Pagurek",
+    "provides": {
+        "Cantilever": "lib/Underscore.pm"
+    },
+    "depends": [
+    ],
+    "source-url": "git@github.com:davepagurek/Underscore-Perl6.git"
+}
