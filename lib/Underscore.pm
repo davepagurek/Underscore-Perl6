@@ -1,6 +1,8 @@
 use v6;
 
 module Underscore {
+  my $iterable-type = List|Hash;
+
   class _ is export {
     my _ $instance;
     method new { !!! }
@@ -9,11 +11,14 @@ module Underscore {
       $instance;
     }
 
-    multi method each(@list, &each-func) {
-      for @list.list -> $elem { &each-func($elem); }
-    }
-    multi method each(%hash, &each-func) {
-      for %hash.kv -> $k, $v { &each-func($k, $v); }
+    method each ($iterable where $iterable ~~ $iterable-type, &each-func) {
+      for $iterable.kv -> $k, $v {
+        if &each-func.count == 1 {
+          &each-func($v); 
+        } else {
+          &each-func($v, $k);
+        }
+      }
     }
   }
 }
